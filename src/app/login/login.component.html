@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2" >
+            <mat-card>
+                <form [formGroup]="form" (ngSubmit)="auth.login(form.value)">
+                    <mat-form-field appearance="fill">
+                        <input matInput type="email" placeholder="Email" formControlName="email">
+                    </mat-form-field>
+                    <br>    
+
+                    <mat-form-field appearance="fill">
+                        <input matInput type="password" placeholder="Password" formControlName="password">
+                    </mat-form-field>
+                    <br>
+
+                    <button mat-raised-button color="primary" [disabled]="!form.valid">Login</button>
+                </form>
+            </mat-card>
+        </div>
+    </div>
+</div>
