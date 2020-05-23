@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row">
+        <mat-card>
+            <div class="row">
+                <div class="col-md-4">
+                    <mat-card>
+                        <mat-card-title>{{ user?.name }}</mat-card-title>
+                        <mat-card-subtitle>{{ user?.email }}</mat-card-subtitle>
+                    </mat-card>
+                </div>
+
+                <mat-list color="primary">
+                    <h3 mat-subheader>Songs</h3>
+                    <mat-list-item *ngFor="let song of songs; let i = index">
+                      <mat-icon color="primary" mat-list-icon>music_note</mat-icon>
+                      <h4 mat-line>{{ song.songTitle }}</h4>
+                      <h5 mat-line>by {{ song.artist }}</h5>
+                      <!-- <mat-icon color="primary" *ngIf="currentFile.index === i && !state?.error">volume_up</mat-icon> -->
+                      <!-- <h6 *ngIf="currentFile.index === i && state?.error">ERROR</h6> -->
+                      <mat-icon aria-hidden="false" aria-label="Example home icon" (click)="deleteSong(song.id)">delete</mat-icon>
+                      <mat-divider></mat-divider>
+                    </mat-list-item>
+                  </mat-list>
+            </div>
+        </mat-card>
+    </div>
+</div>

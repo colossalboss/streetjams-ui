@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2" >
+            <mat-card>
+                <form [formGroup]="form" (ngSubmit)="onPublish(form.value)">
+                    <mat-form-field appearance="fill">
+                        <input matInput placeholder="Artist name" formControlName="artist">
+                    </mat-form-field>
+                    <br>
+
+                    <mat-form-field appearance="fill">
+                        <input matInput type="text" placeholder="Song title" formControlName="songTitle">
+                    </mat-form-field>
+                    <br>
+
+                    <!-- <mat-form-field appearance="fill"> -->
+                    <input type="file" class="file-input mb-3 py-3" accept="audio/mp3,audio/*;capture=microphone" (change)="onSelect($event)" placeholder="Pick a song" formControlName="title">
+                    <!-- </mat-form-field>
+                    <br> -->
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Genre</mat-label>
+                        <mat-select formControlName="genre">
+                          <mat-option *ngFor="let category of categories" [value]="category">
+                            {{ category }}
+                          </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <br>
+
+                    <mat-form-field appearance="fill">
+                        <input matInput type="datetime" placeholder="Release date" formControlName="releaseDate">
+                    </mat-form-field>
+                    <br>
+
+                    <button mat-raised-button color="primary" [disabled]="!form.valid">Register</button>
+                </form>
+            </mat-card>
+        </div>
+    </div>
+</div>

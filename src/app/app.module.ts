@@ -15,6 +15,10 @@ import { AuthInterceptor } from './auth.interceptor';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { LoginComponent } from './login/login.component';
+import { UploadComponent } from './upload/upload.component';
+import {MatSelectModule} from '@angular/material/select';
+import { ProfileComponent } from './profile/profile.component';
+
 
 
 
@@ -23,7 +27,9 @@ import { LoginComponent } from './login/login.component';
     AppComponent,
     PlayerComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    UploadComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +39,8 @@ import { LoginComponent } from './login/login.component';
     BrowserAnimationsModule,
     MaterialModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule
   ],
   providers: [AuthService, SongsService, {
     provide: HTTP_INTERCEPTORS,

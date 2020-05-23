@@ -36,7 +36,13 @@ export class SongsService {
     
   }
 
-  // getResources() {
-  //   return of(this.files);
-  // }
+  getUserSongs(id) {
+    return this.http.get(`/api/songs/user/${id}`);
+  }
+
+  removeSong(id) {
+    console.log(id);
+    this.http.delete("/api/songs/" + id).subscribe(res => console.log(res)
+    );
+  }
 }
