@@ -47,6 +47,7 @@ export class UploadComponent implements OnInit {
     fd.append('genre', obj.genre);
 
     this.publish.publish(fd).subscribe(res => {
+      console.log("res");
       console.log(res);
     })
   }

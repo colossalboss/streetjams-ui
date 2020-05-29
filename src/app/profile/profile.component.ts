@@ -28,6 +28,11 @@ export class ProfileComponent implements OnInit {
       this.user = res;
     })
 
+    this.getSongs(id);
+    
+  }
+
+  getSongs(id) {
     this.songsService.getUserSongs(id).subscribe(res => {
       this.songs = res;
     })
@@ -35,6 +40,7 @@ export class ProfileComponent implements OnInit {
 
   deleteSong(id) {
     this.songsService.removeSong(id);
+    this.getSongs(id)
   }
 
 }
