@@ -53,9 +53,14 @@ export class PlayerComponent implements OnInit {
     event.srcElement.classList.remove("hidden");
   }
 
-  onChanged() {
+  onChanged(event) {
     console.log("Changed");
-    
+    if (event.srcElement.value !== "") {
+      this.files = this.songs.filter(song => song.songTitle.toLowerCase().includes(event.srcElement.value.toLowerCase()));
+    } else {
+      this.files = this.songs;
+
+    }
   }
 
   onDone(event) {
