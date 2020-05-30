@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { UploadComponent } from './upload/upload.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from './auth.guard';
+import { GalleryComponent } from './gallery/gallery.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "publish", component: UploadComponent, canActivate: [AuthGuard] },
   { path: "profile/:id", component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: "gallery", component: GalleryComponent },
   { path: "**", redirectTo: "" }
 ];
 

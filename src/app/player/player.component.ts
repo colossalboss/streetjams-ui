@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AudioService } from '../audio.service';
 import { SongsService } from '../songs.service';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-player',
@@ -8,17 +9,20 @@ import { SongsService } from '../songs.service';
   styleUrls: ['./player.component.css']
 })
 
-export class PlayerComponent {
+export class PlayerComponent implements OnInit {
   files: Array<any> = [
     { name: "First Song", artist: "Inder" },
-    { name: "Second Song", artist: "You" }
+    { name: "Second Song", artist: "Me" }
   ];
+  songs: Array<any>;
+  form;
   state;
   currentFile: any = {};
 
   constructor (
     private audioService: AudioService,
-    private songsService: SongsService
+    private songsService: SongsService,
+    private fb: FormBuilder
   ) {
     // get media files
     // songsService.getFiles().subscribe(files => {
@@ -26,13 +30,38 @@ export class PlayerComponent {
     // });
     songsService.getFiles().subscribe(files => {
       console.log(files)
-      this.files = files;
+      this.songs = files;
+      this.files = this.songs;
     });
 
     // listen to stream state
     this.audioService.getState().subscribe(state => {
       this.state = state;
     });
+
+    this.form = this.fb.group({
+      query: ''
+    })
+  }
+
+  ngOnInit() {
+    // this.files = this.songs;
+  }
+
+  onClick(event) {
+    console.log(event);
+    event.srcElement.classList.remove("hidden");
+  }
+
+  onChanged() {
+    console.log("Changed");
+    
+  }
+
+  onDone(event) {
+    console.log("Done");
+    event.srcElement.value = ""    
+    event.srcElement.classList.add("hidden")
   }
 
   playStream(url) {

@@ -5,6 +5,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatGridListModule} from '@angular/material/grid-list';
+
 
 
 
@@ -13,6 +15,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {  MatSliderModule } from "@angular/material/slider";
 
 const modules = [
+  MatGridListModule,
   MatButtonModule,
   MatListModule,
   MatSliderModule,

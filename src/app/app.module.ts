@@ -18,6 +18,7 @@ import { LoginComponent } from './login/login.component';
 import { UploadComponent } from './upload/upload.component';
 import {MatSelectModule} from '@angular/material/select';
 import { ProfileComponent } from './profile/profile.component';
+import { GalleryComponent } from './gallery/gallery.component';
 
 
 
@@ -29,7 +30,8 @@ import { ProfileComponent } from './profile/profile.component';
     RegisterComponent,
     LoginComponent,
     UploadComponent,
-    ProfileComponent
+    ProfileComponent,
+    GalleryComponent
   ],
   imports: [
     BrowserModule,

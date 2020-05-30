@@ -1,7 +1,12 @@
 <div class="container">
-    <mat-toolbar color="primary" class="main-toolbar">
-      <span>Audio Player</span>
-    </mat-toolbar>
+  <mat-toolbar color="primary" class="main-toolbar">
+    <form [formGroup]="form" style="width: 100%;">
+      <mat-form-field appearance="fill" style="width: 100%;">
+          <input #inp matInput placeholder="Name" class="mt-1 hidden" formControlName="query" (blur)="onDone($event)" (input)="onChanged()" (click)="onClick($event)">
+          <i class="fa fa-search h4 float-right" (click)="inp.click()"></i>
+      </mat-form-field>
+    </form>
+  </mat-toolbar>
 
     <div class="content">
         <div class="logo">

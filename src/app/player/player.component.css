@@ -21,6 +21,19 @@
     font-size: 160px !important;
 }
 
+
+
+.media-footer {
+    position: fixed !important;
+    width: inherit;
+    left: 0;
+    bottom: 0;
+}
+
+.content {
+    padding-bottom: 95px;
+}
+
 .slidebar {
     min-width: 70%;
     margin: auto;
@@ -29,4 +42,8 @@
 .ctrls {
     display: flex;
     justify-content: space-around;
+}
+
+.hidden {
+    display: none;
 }
