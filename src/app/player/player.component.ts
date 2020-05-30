@@ -48,6 +48,10 @@ export class PlayerComponent implements OnInit {
     // this.files = this.songs;
   }
 
+  getAllSongs() {
+    this.songsService.getFiles().subscribe(res => this.files = res);
+  }
+
   onClick(event) {
     console.log(event);
     event.srcElement.classList.remove("hidden");
@@ -56,7 +60,7 @@ export class PlayerComponent implements OnInit {
   onChanged(event) {
     console.log("Changed");
     if (event.srcElement.value !== "") {
-      this.files = this.songs.filter(song => song.songTitle.toLowerCase().includes(event.srcElement.value.toLowerCase()));
+      this.files = this.songs.filter(song => song.songTitle.toLowerCase().includes(event.srcElement.value.toLowerCase()) || song.artist.toLowerCase().includes(event.srcElement.value.toLowerCase()));
     } else {
       this.files = this.songs;
 

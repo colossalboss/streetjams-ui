@@ -15,7 +15,7 @@
       </div>
 
       <mat-list color="primary">
-        <h3 mat-subheader>Songs</h3>
+        <h2 mat-subheader (click)="getAllSongs()"><span class="songs h4">Songs</span></h2>
         <mat-list-item *ngFor="let file of files; let i = index" (click)="openFile(file, i)">
           <mat-icon color="primary" mat-list-icon>music_note</mat-icon>
           <h4 mat-line>{{ file.songTitle }}</h4>

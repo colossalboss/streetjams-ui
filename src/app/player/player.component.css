@@ -44,6 +44,21 @@
     justify-content: space-around;
 }
 
+.songs:hover {
+    cursor: pointer;
+    background: #3f51b5;
+    padding: .5rem;
+    color: #fff;
+    border-radius: 8px;
+}
+
+.fa-search:hover {
+    cursor: pointer;
+    background: #000;
+    color: #fff;
+    padding: .3rem;
+}
+
 .hidden {
     display: none;
 }
