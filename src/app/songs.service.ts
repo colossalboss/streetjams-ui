@@ -45,8 +45,12 @@ export class SongsService {
 
   removeSong(id) {
     console.log(id);
-    // this.http.delete("https://street-jams-001.herokuapp.com/api/songs/" + id).subscribe(res => console.log(res)
-    this.http.delete("/api/songs/" + id).subscribe(res => console.log(res)
-    );
+    // return this.http.delete("https://street-jams-001.herokuapp.com/api/songs/" + id)
+    return this.http.delete("/api/songs/" + id);
+  }
+
+  getArtist() {
+    // return this.http.get("https://street-jams-001.herokuapp.com/api/artists");
+    return this.http.get("/api/artists")
   }
 }

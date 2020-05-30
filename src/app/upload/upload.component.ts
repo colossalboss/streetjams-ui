@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { PublishService } from '../publish.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class UploadComponent implements OnInit {
 
   categories: string[] = ["Pop", "R&B", "Jazz", "Rock", "Country", "Blues", "Other"]
 
-  constructor(private formBuilder: FormBuilder, private publish: PublishService) {
+  constructor(private formBuilder: FormBuilder, private publish: PublishService, private router: Router) {
     this.form = this.formBuilder.group({
       artist: ['', Validators.required],
       songTitle: ['', Validators.required],
@@ -49,6 +50,7 @@ export class UploadComponent implements OnInit {
     this.publish.publish(fd).subscribe(res => {
       console.log("res");
       console.log(res);
+      this.router.navigate(['/'])
     })
   }
 

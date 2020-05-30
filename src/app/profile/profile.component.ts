@@ -12,6 +12,7 @@ export class ProfileComponent implements OnInit {
 
   songs;
   user;
+  userId;
 
   constructor(private songsService: SongsService,
      private route: ActivatedRoute,
@@ -22,6 +23,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
 
     let id = this.route.snapshot.params.id;
+    this.userId = id;
 
     this.userService.getUser().subscribe(res => {
       console.log(res);
@@ -29,7 +31,6 @@ export class ProfileComponent implements OnInit {
     })
 
     this.getSongs(id);
-    
   }
 
   getSongs(id) {
@@ -39,8 +40,14 @@ export class ProfileComponent implements OnInit {
   }
 
   deleteSong(id) {
-    this.songsService.removeSong(id);
-    this.getSongs(id)
+    this.songsService.removeSong(id).subscribe(res => {
+      console.log(res);
+      this.songsService.getUserSongs(this.userId).subscribe(songs => {
+        console.log(songs)
+        this.songs = songs;
+      })
+    });
+    
   }
 
 }

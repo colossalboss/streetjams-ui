@@ -1,44 +1,23 @@
 <div class="container pt-2">
     <div class="row">
         <div class="col-md-12">
-            <mat-grid-list cols="2" rowHeight="2:1">
-                <mat-grid-tile>
-                    <mat-card>
-                        <mat-card-header>
-                            <mat-card-title class="text-light" style="position: relative; top: 2rem;">Davido</mat-card-title>
-                        </mat-card-header>
-                        <mat-card-content>
-                            <img class="border-rounded" mat-card-md-image src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Gentleman-Video-Shoot-January-2014-BellaNaija-027-402x600.jpg">
-                        </mat-card-content>
-                        <mat-card-footer></mat-card-footer>
-                    </mat-card>
-                </mat-grid-tile>
+            <div class="row artists-con">
+                <div class="col" *ngFor="let artist of artists">
+                    <a [routerLink]="['/profile', artist?.id]">
+                        <div style="width: 70%; margin: auto;">
+                            <div class="artist-image">
+                                <img src="https://ei.is.tuebingen.mpg.de/assets/noEmployeeImage_md-eaa7c21cc21b1943d77e51ab00a5ebe9.png" alt="Artist">
+                            </div>
+                        </div>
+                        <div class="details text-center">
+                            <h4 class="artist-name mb-0 font-weight-bold">{{ artist?.name }}</h4>
+                            <p class="font-italic">{{ artist?.numberOfSongs }} songs</p>
+                        </div>
+                    </a>
+                </div>
                 
-                <mat-grid-tile>
-                    <mat-card>
-                        <mat-card-header>
-                            <mat-card-title class="text-light" style="position: relative; top: 2rem;">Davido</mat-card-title>
-                        </mat-card-header>
-                        <mat-card-content>
-                            <img class="border-rounded" mat-card-md-image src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Gentleman-Video-Shoot-January-2014-BellaNaija-027-402x600.jpg">
-                        </mat-card-content>
-                        <mat-card-footer></mat-card-footer>
-                    </mat-card>
-                </mat-grid-tile>
-
-                <mat-grid-tile>
-                    <mat-card>
-                        <mat-card-header>
-                            <mat-card-title class="text-light" style="position: relative; top: 2rem;">Davido</mat-card-title>
-                        </mat-card-header>
-                        <mat-card-content>
-                            <img class="border-rounded" mat-card-md-image src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Gentleman-Video-Shoot-January-2014-BellaNaija-027-402x600.jpg">
-                        </mat-card-content>
-                        <mat-card-footer></mat-card-footer>
-                    </mat-card>
-                </mat-grid-tile>
                 
-            </mat-grid-list>
+            </div>
         </div>
     </div>
 </div>
