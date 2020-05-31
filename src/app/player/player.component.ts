@@ -20,7 +20,7 @@ export class PlayerComponent implements OnInit {
   currentFile: any = {};
 
   constructor (
-    private audioService: AudioService,
+    public audioService: AudioService,
     private songsService: SongsService,
     private fb: FormBuilder
   ) {
@@ -120,7 +120,5 @@ export class PlayerComponent implements OnInit {
   onSliderChangeEnd(change) {
     this.audioService.seekTo(change.value);
   }
-
-  
 }
 
