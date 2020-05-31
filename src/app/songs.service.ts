@@ -33,24 +33,24 @@ export class SongsService {
 
   getFiles() {
 
-    return this.http.get<any>("https://street-jams-001.herokuapp.com/api/songs");
-    // return this.http.get<any>("/api/songs");
+    // return this.http.get<any>("https://street-jams-001.herokuapp.com/api/songs");
+    return this.http.get<any>("/api/songs");
     
   }
 
   getUserSongs(id) {
-    return this.http.get(`https://street-jams-001.herokuapp.com/api/songs/user/${id}`);
-    // return this.http.get(`/api/songs/user/${id}`);
+    // return this.http.get(`https://street-jams-001.herokuapp.com/api/songs/user/${id}`);
+    return this.http.get(`/api/songs/user/${id}`);
   }
 
   removeSong(id) {
     console.log(id);
-    return this.http.delete("https://street-jams-001.herokuapp.com/api/songs/" + id)
-    // return this.http.delete("/api/songs/" + id);
+    // return this.http.delete("https://street-jams-001.herokuapp.com/api/songs/" + id)
+    return this.http.delete("/api/songs/" + id);
   }
 
   getArtist() {
-    return this.http.get("https://street-jams-001.herokuapp.com/api/artists");
-    // return this.http.get("/api/artists")
+    // return this.http.get("https://street-jams-001.herokuapp.com/api/artists");
+    return this.http.get("/api/artists")
   }
 }

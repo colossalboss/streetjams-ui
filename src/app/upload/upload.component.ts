@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { PublishService } from '../publish.service';
 import { Router } from '@angular/router';
+import { HttpEventType } from '@angular/common/http';
 
 
 @Component({
@@ -14,6 +15,9 @@ export class UploadComponent implements OnInit {
 
   form;
   selectedFile: File;
+
+  uploadStatus;
+  uploadProgress
 
   categories: string[] = ["Pop", "R&B", "Jazz", "Rock", "Country", "Blues", "Other"]
 
@@ -47,10 +51,21 @@ export class UploadComponent implements OnInit {
     fd.append('releaseDate', obj.releaseDate);
     fd.append('genre', obj.genre);
 
-    this.publish.publish(fd).subscribe(res => {
+    this.publish.publish(fd).subscribe(event => {
+      console.log(event)
       console.log("res");
-      console.log(res);
-      this.router.navigate(['/'])
+      // console.log(res);
+
+      if (event.type === HttpEventType.UploadProgress) {
+        console.log("Upload progress: " + Math.round((event.loaded / event.total) * 100) + "%");
+
+        this.uploadStatus = "Uploading...";
+        this.uploadProgress = Math.round((event.loaded / event.total) * 100) + "%";
+        
+      } else if (event.type == HttpEventType.Response) {
+        console.log(event);
+        this.router.navigate(['/'])
+      }
     })
   }
 
