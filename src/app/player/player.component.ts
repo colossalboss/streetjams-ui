@@ -10,11 +10,31 @@ import { FormBuilder } from '@angular/forms';
 })
 
 export class PlayerComponent implements OnInit {
-  files: Array<any> = [
-    { name: "First Song", artist: "Inder" },
-    { name: "Second Song", artist: "Me" }
+  files: Array<any>;
+
+  songs: Array<any> = [
+    // tslint:disable-next-line: max-line-length
+    {
+      songUrl:
+        "https://ia801504.us.archive.org/3/items/EdSheeranPerfectOfficialMusicVideoListenVid.com/Ed_Sheeran_-_Perfect_Official_Music_Video%5BListenVid.com%5D.mp3",
+      songTitle: "Perfect",
+      artist: " Ed Sheeran"
+    },
+    {
+      // tslint:disable-next-line: max-line-length
+      songUrl:
+        "https://ia801609.us.archive.org/16/items/nusratcollection_20170414_0953/Man%20Atkiya%20Beparwah%20De%20Naal%20Nusrat%20Fateh%20Ali%20Khan.mp3",
+        songTitle: "Man Atkeya Beparwah",
+      artist: "Nusrat Fateh Ali Khan"
+    },
+    {
+      songUrl:
+        "https://ia801503.us.archive.org/15/items/TheBeatlesPennyLane_201805/The%20Beatles%20-%20Penny%20Lane.mp3",
+        songTitle: "Penny Lane",
+      artist: "The Beatles"
+    }
   ];
-  songs: Array<any>;
+
   form;
   state;
   currentFile: any = {};
@@ -30,7 +50,13 @@ export class PlayerComponent implements OnInit {
     // });
     songsService.getFiles().subscribe(files => {
       console.log(files)
-      this.songs = files;
+      // this.songs = files;
+
+      if (files.length > 0) {
+        files.forEach(file => {
+          this.songs.push(file);
+        });
+      }
       this.files = this.songs;
     });
 
@@ -49,7 +75,10 @@ export class PlayerComponent implements OnInit {
   }
 
   getAllSongs() {
-    this.songsService.getFiles().subscribe(res => this.files = res);
+    // this.songsService.getFiles().subscribe(res => {
+    //   this.files = res;
+    // });
+    this.files = this.songs;
   }
 
   onClick(event) {
@@ -114,7 +143,7 @@ export class PlayerComponent implements OnInit {
   }
 
   isLastPlaying() {
-    return this.currentFile.index === this.files.length - 1;
+    return this.currentFile?.index === this.files?.length - 1;
   }
 
   onSliderChangeEnd(change) {
